@@ -1,0 +1,8 @@
+<h1>List of all students of Colegio Mirasierra</h1>
+
+{{!-- Iteramos sobre el array e imprimimos el nombre y el apellido --}}
+<ul>
+  {{#each allStudents }}
+  <li>{{this.name}} {{this.lastName}}</li>
+  {{/each}}
+</ul>
