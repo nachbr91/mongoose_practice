@@ -1,0 +1,27 @@
+{{!-- Crear formulario y conectarlo con el backend --}}
+
+<h1>Add new student</h1>
+
+<p>Nombre  dele estudiante:</p>
+<input type="text" id="name" name="name"/>
+
+<p>Apellido del estudiante:</p>
+<input type="text" id="lastName" name="lastName"/>
+
+<p>Edad:</p>
+<input type="number" id="age" min="0" name="age" />
+
+<p>Clase:</p>
+<select id="class" name="class">
+  <option value="A">A</option>
+  <option value="B">B</option>
+</select>
+
+<p>Idioma:</p>
+<select id="idioma" name="idioma">
+  <option value="ingles">Inglés</option>
+  <option value="español">Español</option>
+  <option value="NA">N.A.</option>
+</select>
+
+<button id="create-student-button" class="btn btn-primary">Crear estudiante</button>

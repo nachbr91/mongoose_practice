@@ -10,7 +10,7 @@ const studentSchema = new Schema({
   grades: {type: Array},
   class: {type: String, enum: ['A', 'B']},
   pendingBills: {type: Boolean, default: false},
-  idioma: {type: String, enum: ['ingles', 'español']}
+  idioma: {type: String, enum: ['ingles', 'español', 'NA']}
 }, {versionKey: false, timestamps: true});
 
 //Exporto modelo a mongoose

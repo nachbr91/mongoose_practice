@@ -29,21 +29,47 @@ connectToMongo();
 app.set('views', __dirname + '/views');
 app.set('view engine', 'hbs');
 
+//Middleware for the public
+app.use(express.static('public'));
+
+//Middleware for body-parser
+app.use(express.json());
+
 //Routes
 
 app.get('/', (req, res) => {
   res.render('home.hbs');
 });
 
-app.get('/student/:id', async (req, res) => {
-  const studentInfoFromDatabase = await Student.findById(req.params.id)
-  res.render('student.hbs', studentInfoFromDatabase);
-});
+app.get('/student/:id', async (req, res)=>{
+  try {
+    const studentInfoFromDatabase = await Student.findById(
+      req.params.id,
+      {name: 1, lastName: 1, age: 1, class: 1, idioma: 1}
+    )
+    res.render('student.hbs', studentInfoFromDatabase)
+  } catch(err){
+    res.render('error.hbs', {errorMsg: "El ID proporcionado no corresponde con ningún alumno."})
+  }
+})
 
 //Llamada a la base de datos y enviarlo al front-end
 app.get('/all-students', async (req, res) => {
   const allStudents = await Student.find({}, {name: 1, lastName: 1})
   res.render('allStudents.hbs', {allStudents});
+});
+
+app.get('/new-student', (req, res) => {
+  res.render('newStudent.hbs')
+});
+
+app.post('/new-student', async (req, res) => {
+  try {
+    const createdStudent = await Student.create(req.body)
+    console.log(createdStudent);
+  } catch(err) {
+    console.log('Error:', err)
+  }
 });
 
 //Server listener
