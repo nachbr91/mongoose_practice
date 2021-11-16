@@ -15,7 +15,7 @@ const Student = require('./models/Student.js');
 const connectToMongo = async () => {
   try {
     await mongoose.connect(
-      'mongodb+srv://Nacho:12345@cluster0.r4vv6.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+      'mongodb+srv://<user>:<password>@cluster0.r4vv6.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
       {
         useNewUrlParser: true,
         useUnifiedTopology: true,
